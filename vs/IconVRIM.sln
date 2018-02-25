@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IconVRIM", "IconVRIM.csproj", "{96E97396-34C4-4030-8BEC-5A036CE18F04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96E97396-34C4-4030-8BEC-5A036CE18F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96E97396-34C4-4030-8BEC-5A036CE18F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96E97396-34C4-4030-8BEC-5A036CE18F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96E97396-34C4-4030-8BEC-5A036CE18F04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6D5D287-FC7E-4707-AED1-304C66120F0D}
+	EndGlobalSection
+EndGlobal
