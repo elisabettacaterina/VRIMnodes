@@ -1,0 +1,51 @@
+<Workspace Version="1.3.2.2480" X="121.446852488317" Y="250.913302748216" zoom="0.832737936913065" ScaleFactor="1" Name="CloseProfileWithOffset" Description="" ID="812678d1-0f90-4033-ad3b-a12e5011a7c7" Category="VRIM.ProfilesAndPaths">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="PolyCurve" resolvedName="Autodesk.DesignScript.Geometry.PolyCurve" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="DSCore.Object" resolvedName="DSCore.Object" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="String" resolvedName="DSCore.String" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="List" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="27a7c1ac-e326-4fe8-adbf-b9ee5fcc14d2" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="CloseProfile_Offset" x="250" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="// Copyright(c) 2017, Elisabetta Caterina Giovannini&#xA;// Alma Mater Studiorum - University of Bologna&#xA;// VRIM project&#xA;// www.unibo.it/sitoweb/elisabettacaterina.giovannini/en&#xA;// elisabettacaterina.giovannini@unibo.it&#xA;&#xA;// Punti di inizio e fine CloseProfile&#xA;StartPt;&#xA;EndPt;&#xA;OffsetIN;&#xA;L0=StartPt.X;&#xA;Vx= L0+OffsetIN;&#xA;&#xA;V = Point.ByCoordinates(Vx, StartPt.Y, StartPt.Z);&#xA;W = Point.ByCoordinates(Vx, EndPt.Y, EndPt.Z);&#xA;&#xA;t1 = {StartPt, V, W, EndPt};&#xA;&#xA;Profile = PolyCurve.ByPoints(t1, false);&#xA;GetProfile = {Moulding, Profile};&#xA;// Close Profile and filter geometries from List&#xA;UnionList= Flatten(GetProfile);&#xA;SelectNumbers=DSCore.Object.Type(UnionList);&#xA;SeparateGeometries=String.Contains(SelectNumbers, &quot;System&quot;, false);&#xA;FilterGeometries=List.FilterByBoolMask(UnionList, SeparateGeometries);&#xA;GetCurves=__TryGetValueFromNestedDictionaries(FilterGeometries, &quot;out&quot;);&#xA;polyCurve = PolyCurve.ByJoinedCurves(GetCurves);" ShouldFocus="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <PortInfo index="2" default="False" />
+      <PortInfo index="3" default="False" />
+    </Dynamo.Graph.Nodes.CodeBlockNodeModel>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="62bd4e36-3ac8-46fe-94fe-4d9e6e56776c" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="StartPt" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="7b100cd4-6d47-43e3-80e7-84f5eba5e035" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="150" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="EndPt" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="3402cb21-7a7f-4679-b1dc-1f3502da841a" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="300" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="OffsetIN" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="545d52c1-4458-48de-99dc-d0b97822d6db" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="450" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="Moulding" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="ee5e6d24-b999-43a0-bcc7-f0ed78d09365" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1047.78688474451" y="146.567856308441" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="Same Sequence" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="785505ec-019b-404c-92af-c684888ae0ed" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1080.08352166408" y="448.482048800991" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="Profile" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="27a7c1ac-e326-4fe8-adbf-b9ee5fcc14d2" start_index="0" end="ee5e6d24-b999-43a0-bcc7-f0ed78d09365" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="27a7c1ac-e326-4fe8-adbf-b9ee5fcc14d2" start_index="15" end="785505ec-019b-404c-92af-c684888ae0ed" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="62bd4e36-3ac8-46fe-94fe-4d9e6e56776c" start_index="0" end="27a7c1ac-e326-4fe8-adbf-b9ee5fcc14d2" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="7b100cd4-6d47-43e3-80e7-84f5eba5e035" start_index="0" end="27a7c1ac-e326-4fe8-adbf-b9ee5fcc14d2" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="3402cb21-7a7f-4679-b1dc-1f3502da841a" start_index="0" end="27a7c1ac-e326-4fe8-adbf-b9ee5fcc14d2" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="545d52c1-4458-48de-99dc-d0b97822d6db" start_index="0" end="27a7c1ac-e326-4fe8-adbf-b9ee5fcc14d2" end_index="3" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="1.22176586416528" eyeY="83.4861635093882" eyeZ="26.2000942418798" lookX="-6.22176586416528" lookY="-72.4861635093882" lookZ="-34.2000942418798" upX="-0.141041919482196" upY="0.615661475325665" upZ="-0.775285834224141" />
+  </Cameras>
+</Workspace>

@@ -1,0 +1,47 @@
+<Workspace Version="1.3.2.2480" X="-197.096164062528" Y="-129.484610902971" zoom="0.576033703577123" ScaleFactor="1" Name="SetParameterValue" Description="" ID="91081b9d-7a4c-4fbd-82bf-f649b8b29ba4" Category="VRIM.Revit">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="DSOffice.Excel" resolvedName="DSOffice.Excel" assemblyName="DSOffice.dll" />
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="Circle" resolvedName="Autodesk.DesignScript.Geometry.Circle" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="List" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="PolyCurve" resolvedName="Autodesk.DesignScript.Geometry.PolyCurve" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="String" resolvedName="DSCore.String" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="Vector" resolvedName="Autodesk.DesignScript.Geometry.Vector" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Arc" resolvedName="Autodesk.DesignScript.Geometry.Arc" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Line" resolvedName="Autodesk.DesignScript.Geometry.Line" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Rectangle" resolvedName="Autodesk.DesignScript.Geometry.Rectangle" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="PolySurface" resolvedName="Autodesk.DesignScript.Geometry.PolySurface" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Solid" resolvedName="Autodesk.DesignScript.Geometry.Solid" assemblyName="ProtoGeometry.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonStringNode guid="3adac37b-169b-4d3f-850b-5f5faf870794" type="PythonNodeModels.PythonStringNode" nickname="Python Script From String" x="1215.94417682478" y="460.926877604028" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="3">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <PortInfo index="2" default="False" />
+    </PythonNodeModels.PythonStringNode>
+    <CoreNodeModels.Formula guid="cfa9250e-f8ef-433f-b0bc-f0b8961a694a" type="CoreNodeModels.Formula" nickname="Formula" x="958.222059513101" y="555.883746176158" isVisible="true" isUpstreamVisible="true" lacing="Auto" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <FormulaText>x/30.48</FormulaText>
+    </CoreNodeModels.Formula>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="19921f94-8335-43e9-a564-6a07811f7f55" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="250" y="423.072937739548" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;&#xA;import clr&#xA;clr.AddReference('RevitAPI')&#xA;from Autodesk.Revit.DB import*&#xA;&#xA;clr.AddReference('RevitServices')&#xA;from RevitServices.Persistence import DocumentManager&#xA;from RevitServices.Transactions import TransactionManager&#xA;&#xA;doc = DocumentManager.Instance.CurrentDBDocument&#xA;&#xA;param_name = IN[0]&#xA;param_value = IN[1]&#xA;&#xA;param_list = doc.FamilyManager.GetParameters()&#xA;names = [p.Definition.Name for p in param_list]&#xA;par1 = None&#xA;if param_name in names:&#xA;	par1 = param_list[names.index(param_name)]&#xA;if par1 != None:&#xA;	TransactionManager.Instance.EnsureInTransaction(doc)&#xA;	try :&#xA;		doc.FamilyManager.Set(par1,param_value)&#xA;		OUT = 'Success'&#xA;	except:&#xA;		OUT = 'Failed'&#xA;	TransactionManager.Instance.TransactionTaskDone()&#xA;else :&#xA;	OUT = 'Failed';&#xA;&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="f5c6df72-02d9-40e1-bc56-a72bd747f788" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="744.785960836861" y="257.746152739049" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="Parameter_Value" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="f7594711-e4ef-4d0f-ac0c-ddd90cb20dbb" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="870.019872781271" y="194.374775610552" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="Parameter_Name" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="cfa9250e-f8ef-433f-b0bc-f0b8961a694a" start_index="0" end="3adac37b-169b-4d3f-850b-5f5faf870794" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="19921f94-8335-43e9-a564-6a07811f7f55" start_index="0" end="3adac37b-169b-4d3f-850b-5f5faf870794" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="f5c6df72-02d9-40e1-bc56-a72bd747f788" start_index="0" end="cfa9250e-f8ef-433f-b0bc-f0b8961a694a" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="f7594711-e4ef-4d0f-ac0c-ddd90cb20dbb" start_index="0" end="3adac37b-169b-4d3f-850b-5f5faf870794" end_index="1" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="100.292869567871" eyeY="65.9420776367188" eyeZ="-41.7290420532227" lookX="-60.3768348693848" lookY="-64.1451873779297" lookZ="36.0070037841797" upX="-0.429432421922684" upY="0.866025388240814" upZ="0.256101131439209" />
+  </Cameras>
+</Workspace>
