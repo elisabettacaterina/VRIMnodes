@@ -12,7 +12,7 @@ VRIM nodes are part of the VRIM Project a Virtual Reconstruction Information Man
 **History of VRIM nodes for Dynamo:**
 2018.35.2 Stable Version
 
-**Versioning:** The major number indicates the Year. The Minor number indicates the Month and Day. The build number is an internal build number.
+**Versioning:** The major number indicates the Year. The Minor number indicates the Month. The build number is an internal build number.
 
 **Software environment:** Built against Dynamo +1.3.0 and Revit +2017
 
