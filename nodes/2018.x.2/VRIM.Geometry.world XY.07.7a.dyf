@@ -1,0 +1,44 @@
+<Workspace Version="1.3.2.2480" X="-715.251417933245" Y="-471.938391098715" zoom="1.04226481803877" ScaleFactor="1" Name="7a" Description="" ID="ebd99e77-a2bf-4577-ab20-768857c6c86a" Category="VRIM.Geometry.world XY.07">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Plane" resolvedName="Autodesk.DesignScript.Geometry.Plane" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="EllipseArc" resolvedName="Autodesk.DesignScript.Geometry.EllipseArc" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="PolyCurve" resolvedName="Autodesk.DesignScript.Geometry.PolyCurve" assemblyName="ProtoGeometry.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="8160b78b-4c86-4c4c-8df6-1713485a2e72" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="378.445225183379" y="225.518199756258" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="HW:double[]={10,5};" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="e9813b46-2986-4404-9d4e-80446e2b8204" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="211.913158298221" y="293.57073463526" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="StartPt: var=Point.ByCoordinates(0,0,0);" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="6ac58a95-9aa9-4908-b56d-51441a9b8fcb" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="7a_xy" x="705.106110136733" y="247.835784176717" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="// Copyright(c) 2017, Elisabetta Caterina Giovannini&#xA;// Alma Mater Studiorum - University of Bologna&#xA;// VRIM project&#xA;// www.unibo.it/sitoweb/elisabettacaterina.giovannini/en&#xA;// elisabettacaterina.giovannini@unibo.it&#xA;&#xA;//Measurements - 7a&#xA;H1=HW[0];&#xA;W1=HW[1];&#xA;W0= StartPt.X;&#xA;H0= StartPt.Y;&#xA;&#xA;//Local System (x,y) Half grid Coordinates&#xA;Ax = W0;&#xA;Ay = H0;&#xA;Ex = W0+W1;&#xA;Bx = W0+(W1*2);&#xA;Hy = H0+(H1/2);&#xA;Dy = H0+H1;&#xA;&#xA;//9 Points grid&#xA;zPt= StartPt.Z;&#xA;A = Point.ByCoordinates(Ax,Ay,zPt);&#xA;E = Point.ByCoordinates(Ex,Ay,zPt);&#xA;B = Point.ByCoordinates(Bx,Ay,zPt);&#xA;H = Point.ByCoordinates(Ax,Hy,zPt);&#xA;O = Point.ByCoordinates(Ex,Hy,zPt);&#xA;F = Point.ByCoordinates(Bx,Hy,zPt);&#xA;D = Point.ByCoordinates(Ax,Dy,zPt);&#xA;G = Point.ByCoordinates(Ex,Dy,zPt);&#xA;C = Point.ByCoordinates(Bx,Dy,zPt);&#xA;&#xA;//Geometry 7a&#xA;r1 = W1;&#xA;r2 = H1/2;&#xA;plane = Plane.ByThreePoints(H, O, D);&#xA;geometry7a = EllipseArc.ByPlaneRadiiAngles(plane, r2, r1, 0, 180);&#xA;JoinCurves = PolyCurve.ByJoinedCurves(geometry7a);&#xA;geometryOutput= {JoinCurves, D};" ShouldFocus="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+    </Dynamo.Graph.Nodes.CodeBlockNodeModel>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="a21c3749-8758-423f-b208-a80009634740" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1390.60395681732" y="811.036295462848" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="InfoGeom=OUT[0];&#xA;End=OUT[1];" ShouldFocus="false">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.CodeBlockNodeModel>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="5dad81c1-d47a-4f3c-a9ad-c749db86ef56" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1651.33177789067" y="709.349012067718" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="7a" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="fc376b4e-dec4-4417-8852-e135bfbcf58a" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1657.2521833982" y="770.069809468558" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="EndPt" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="8160b78b-4c86-4c4c-8df6-1713485a2e72" start_index="0" end="6ac58a95-9aa9-4908-b56d-51441a9b8fcb" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="e9813b46-2986-4404-9d4e-80446e2b8204" start_index="0" end="6ac58a95-9aa9-4908-b56d-51441a9b8fcb" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="6ac58a95-9aa9-4908-b56d-51441a9b8fcb" start_index="25" end="a21c3749-8758-423f-b208-a80009634740" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="a21c3749-8758-423f-b208-a80009634740" start_index="0" end="5dad81c1-d47a-4f3c-a9ad-c749db86ef56" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="a21c3749-8758-423f-b208-a80009634740" start_index="1" end="fc376b4e-dec4-4417-8852-e135bfbcf58a" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="47.4181389578141" eyeY="47.8384524528695" eyeZ="24.3606683131191" lookX="-52.4181389578141" lookY="-36.8384524528695" lookZ="-32.3606683131191" upX="-0.269997258514299" upY="0.948323655206208" upZ="-0.166684508491696" />
+  </Cameras>
+</Workspace>
