@@ -1,0 +1,3 @@
+Note about the Package.Customization.dll
+First i Build everything with my Project name. Then, the VRIMnodes.dll and VRIMnodes.Customization.dll were trasferred to the bin folder of the Package.
+In the bin folder i renamed only the VRIMnodes.Customization.dll into default name Package.Customization.dll and then i upload the new version of the Package using Package Manager.
