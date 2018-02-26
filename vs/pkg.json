@@ -10,5 +10,5 @@
     "engine_metadata":"",
     "site_url":"",
     "repository_url":"",
-    "contains_binaries":"true",
+    "contains_binaries":true,
 	"node_libraries":["VRIMnodes.customization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","VRIMnodes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"]}
