@@ -1,4 +1,4 @@
-<Workspace Version="1.3.2.2480" X="734.676912694653" Y="47.3385621216479" zoom="0.599824658248111" ScaleFactor="1" Name="CreateProfileFromFileOnXY" Description="GeometricalAtom" ID="04da6424-6add-436d-b385-497dec5fa78f" Category="VRIM.Function">
+<Workspace Version="1.3.2.2480" X="418.112197063531" Y="166.639628794967" zoom="0.592950755031769" ScaleFactor="1" Name="CreateProfileFromFileOnXY" Description="GeometricalAtom" ID="04da6424-6add-436d-b385-497dec5fa78f" Category="VRIM.Function">
   <NamespaceResolutionMap>
     <ClassMap partialName="DSOffice.Excel" resolvedName="DSOffice.Excel" assemblyName="DSOffice.dll" />
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
@@ -65,6 +65,6 @@
   <Annotations />
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="100.292869567871" eyeY="65.9420776367188" eyeZ="-41.7290420532227" lookX="-60.3768348693848" lookY="-64.1451873779297" lookZ="36.0070037841797" upX="-0.429432421922684" upY="0.866025388240814" upZ="0.256101131439209" />
+    <Camera Name="Background Preview" eyeX="84.4752292217893" eyeY="33.4689586572577" eyeZ="-47.83874534536" lookX="-43.2634023953964" lookY="-19.5047975741385" lookZ="50.3172294959055" upX="-0.0454782645630074" upY="0.997564033888273" upZ="0.052893225893061" />
   </Cameras>
 </Workspace>

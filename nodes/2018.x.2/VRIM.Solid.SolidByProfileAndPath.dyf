@@ -1,0 +1,65 @@
+<Workspace Version="1.3.2.2480" X="-207.48969972548" Y="-424.873150647286" zoom="0.670998674854748" ScaleFactor="1" Name="SolidByProfileAndPath" Description="" ID="4ba02735-c9cb-4e63-85be-0b69cdb4ffe8" Category="VRIM.Solid">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="DSOffice.Excel" resolvedName="DSOffice.Excel" assemblyName="DSOffice.dll" />
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="Circle" resolvedName="Autodesk.DesignScript.Geometry.Circle" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="List" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="PolyCurve" resolvedName="Autodesk.DesignScript.Geometry.PolyCurve" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="String" resolvedName="DSCore.String" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="Vector" resolvedName="Autodesk.DesignScript.Geometry.Vector" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Arc" resolvedName="Autodesk.DesignScript.Geometry.Arc" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Line" resolvedName="Autodesk.DesignScript.Geometry.Line" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Rectangle" resolvedName="Autodesk.DesignScript.Geometry.Rectangle" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="PolySurface" resolvedName="Autodesk.DesignScript.Geometry.PolySurface" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Solid" resolvedName="Autodesk.DesignScript.Geometry.Solid" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="DSCore.Object" resolvedName="DSCore.Object" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="1c66a9ef-9802-479a-91c4-b4fd56fff285" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="376.601177467123" y="1141.08959849351" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="StartPoint" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="b353ea72-6adf-41c9-9ea1-25c1613fd364" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="394.709245276408" y="1205.00223227913" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="EndPoint" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="c83e2edb-0c36-40f0-853d-25c01df2d0c3" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="397.984212359177" y="1270.37253631168" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="OffsetIN" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="854638f8-c265-4156-b682-58237c69e60d" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="400.400539275903" y="1332.17660385119" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="Profile" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="40294db2-7d1f-497c-84f5-846ceaa90fb3" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1801.47728548569" y="1317.17904911534" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="Same Sequence" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="f1510a35-2d84-4d32-a1a1-26379179f2a7" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1898.79654073823" y="1149.98496703954" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="Solid" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="5e342450-a51e-4d9b-ae66-94968f49e70d" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Solid_Offset" x="703.861769155522" y="1278.56082077259" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="// Copyright(c) 2017, Elisabetta Caterina Giovannini&#xA;// Alma Mater Studiorum - University of Bologna&#xA;// VRIM project&#xA;// www.unibo.it/sitoweb/elisabettacaterina.giovannini/en&#xA;// elisabettacaterina.giovannini@unibo.it&#xA;&#xA;// Punti di inizio e fine CloseProfile&#xA;StartPt;&#xA;EndPt;&#xA;OffsetIN;&#xA;L0=StartPt.X;&#xA;Vx= L0-OffsetIN;&#xA;&#xA;V = Point.ByCoordinates(Vx, StartPt.Y, StartPt.Z);&#xA;W = Point.ByCoordinates(Vx, EndPt.Y, EndPt.Z);&#xA;&#xA;t1 = {StartPt, V, W, EndPt};&#xA;&#xA;Profile = PolyCurve.ByPoints(t1, false);&#xA;GetProfile = {Moulding, Profile};&#xA;// Close Profile and filter geometries from List&#xA;UnionList= Flatten(GetProfile);&#xA;SelectNumbers=DSCore.Object.Type(UnionList);&#xA;SeparateGeometries=String.Contains(SelectNumbers, &quot;System&quot;, false);&#xA;FilterGeometries=List.FilterByBoolMask(UnionList, SeparateGeometries);&#xA;GetCurves=__TryGetValueFromNestedDictionaries(FilterGeometries, &quot;out&quot;);&#xA;polyCurve = PolyCurve.ByJoinedCurves(GetCurves);&#xA;solid = Solid.BySweep(polyCurve, Path);&#xA;SameSequence= {W, EndPt, Path};" ShouldFocus="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <PortInfo index="2" default="False" />
+      <PortInfo index="3" default="False" />
+      <PortInfo index="4" default="False" />
+    </Dynamo.Graph.Nodes.CodeBlockNodeModel>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="da3d638d-b659-4e01-86ef-4bda142607bf" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="424.111146856769" y="1399.683959581" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="Path" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="1c66a9ef-9802-479a-91c4-b4fd56fff285" start_index="0" end="5e342450-a51e-4d9b-ae66-94968f49e70d" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="b353ea72-6adf-41c9-9ea1-25c1613fd364" start_index="0" end="5e342450-a51e-4d9b-ae66-94968f49e70d" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="c83e2edb-0c36-40f0-853d-25c01df2d0c3" start_index="0" end="5e342450-a51e-4d9b-ae66-94968f49e70d" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="854638f8-c265-4156-b682-58237c69e60d" start_index="0" end="5e342450-a51e-4d9b-ae66-94968f49e70d" end_index="3" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="5e342450-a51e-4d9b-ae66-94968f49e70d" start_index="16" end="f1510a35-2d84-4d32-a1a1-26379179f2a7" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="5e342450-a51e-4d9b-ae66-94968f49e70d" start_index="17" end="40294db2-7d1f-497c-84f5-846ceaa90fb3" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="da3d638d-b659-4e01-86ef-4bda142607bf" start_index="0" end="5e342450-a51e-4d9b-ae66-94968f49e70d" end_index="4" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="68.8349029854087" eyeY="38.5424707597078" eyeZ="-76.1836899036336" lookX="-58.2771830950437" lookY="-34.4670597840877" lookZ="75.4307855083702" upX="-0.0798011244652676" upY="0.99144482882182" upZ="0.103290209638851" />
+  </Cameras>
+</Workspace>

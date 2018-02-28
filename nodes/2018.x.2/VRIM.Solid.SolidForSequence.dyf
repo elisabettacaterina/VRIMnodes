@@ -1,0 +1,67 @@
+<Workspace Version="1.3.2.2480" X="9.76200184382378" Y="-294.618893158595" zoom="0.56556784705403" ScaleFactor="1" Name="SolidForSequence" Description="" ID="2d5c86ca-7331-457f-9e98-6e1e8b479218" Category="VRIM.Solid">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="DSOffice.Excel" resolvedName="DSOffice.Excel" assemblyName="DSOffice.dll" />
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="Circle" resolvedName="Autodesk.DesignScript.Geometry.Circle" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Point" resolvedName="Autodesk.DesignScript.Geometry.Point" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="List" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="PolyCurve" resolvedName="Autodesk.DesignScript.Geometry.PolyCurve" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="String" resolvedName="DSCore.String" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="Vector" resolvedName="Autodesk.DesignScript.Geometry.Vector" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Arc" resolvedName="Autodesk.DesignScript.Geometry.Arc" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Line" resolvedName="Autodesk.DesignScript.Geometry.Line" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Rectangle" resolvedName="Autodesk.DesignScript.Geometry.Rectangle" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="PolySurface" resolvedName="Autodesk.DesignScript.Geometry.PolySurface" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="Solid" resolvedName="Autodesk.DesignScript.Geometry.Solid" assemblyName="ProtoGeometry.dll" />
+    <ClassMap partialName="DSCore.Object" resolvedName="DSCore.Object" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="74ac1654-3b2d-4ae3-a60a-2bb54f6d2430" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="519.47818378957" y="1275.21925411957" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="EndPt" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="c9ee4d20-90b1-4d96-8a8d-1acae3990369" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="496.863734116393" y="1406.53164387992" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="Moulding" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="3a893b26-7710-4ff5-9839-814e7ec62221" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="SolidForSequence" x="742.437958586771" y="1204.72581294591" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="// Copyright(c) 2017, Elisabetta Caterina Giovannini&#xA;// Alma Mater Studiorum - University of Bologna&#xA;// VRIM project&#xA;// www.unibo.it/sitoweb/elisabettacaterina.giovannini/en&#xA;// elisabettacaterina.giovannini@unibo.it&#xA;&#xA;// Punti di inizio e fine CloseProfile&#xA;&#xA;EndPt;&#xA;SameSequence[0];&#xA;StartPt= SameSequence[1];&#xA;Path= SameSequence[2];&#xA;&#xA;V = SameSequence[0];&#xA;W = Point.ByCoordinates(SameSequence[0].X, EndPt.Y, EndPt.Z);&#xA;&#xA;t1 = {StartPt, V, W, EndPt};&#xA;&#xA;Profile = PolyCurve.ByPoints(t1, false);&#xA;GetProfile = {Moulding, Profile};&#xA;&#xA;// Close Profile and filter geometries from List&#xA;UnionList= Flatten(GetProfile);&#xA;SelectNumbers=DSCore.Object.Type(UnionList);&#xA;SeparateGeometries=String.Contains(SelectNumbers, &quot;System&quot;, false);&#xA;FilterGeometries=List.FilterByBoolMask(UnionList, SeparateGeometries);&#xA;GetCurves=__TryGetValueFromNestedDictionaries(FilterGeometries, &quot;out&quot;);&#xA;polyCurve = PolyCurve.ByJoinedCurves(GetCurves);&#xA;solid = Solid.BySweep(polyCurve, Path);&#xA;Output = {W, EndPt, Path};" ShouldFocus="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <PortInfo index="2" default="False" />
+    </Dynamo.Graph.Nodes.CodeBlockNodeModel>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="697ccc40-805e-4aa5-929c-9e836c72b9b7" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="2195.29618380102" y="1491.66751409393" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="Same Sequence" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="eba6fac9-92f2-4dc9-8bea-1dbbe3495e9c" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1800.14048776197" y="1761.05291801175" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="Solid" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="aa6e6ecc-08fd-4610-8920-1b59b0036ed7" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="464.388900167427" y="1337.51056390823" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="SameSequence" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <CoreNodeModels.Watch guid="6bd22030-cb62-4f01-86fa-1d6e667cd5b7" type="CoreNodeModels.Watch" nickname="Watch" x="1968.89789058123" y="1351.31501381393" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Watch>
+    <CoreNodeModels.Watch guid="491c0255-7643-41ba-9265-342c5f5c7c6d" type="CoreNodeModels.Watch" nickname="Watch" x="1955.0564690354" y="1082.39137217866" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Watch>
+    <CoreNodeModels.Watch guid="3bfbc83c-931f-413f-8fc1-2aef0b61acc5" type="CoreNodeModels.Watch" nickname="Watch" x="1619.8531123073" y="952.640355949386" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Watch>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="74ac1654-3b2d-4ae3-a60a-2bb54f6d2430" start_index="0" end="3a893b26-7710-4ff5-9839-814e7ec62221" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="c9ee4d20-90b1-4d96-8a8d-1acae3990369" start_index="0" end="3a893b26-7710-4ff5-9839-814e7ec62221" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="3a893b26-7710-4ff5-9839-814e7ec62221" start_index="1" end="3bfbc83c-931f-413f-8fc1-2aef0b61acc5" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="3a893b26-7710-4ff5-9839-814e7ec62221" start_index="2" end="6bd22030-cb62-4f01-86fa-1d6e667cd5b7" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="3a893b26-7710-4ff5-9839-814e7ec62221" start_index="3" end="491c0255-7643-41ba-9265-342c5f5c7c6d" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="3a893b26-7710-4ff5-9839-814e7ec62221" start_index="15" end="eba6fac9-92f2-4dc9-8bea-1dbbe3495e9c" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="3a893b26-7710-4ff5-9839-814e7ec62221" start_index="16" end="697ccc40-805e-4aa5-929c-9e836c72b9b7" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="aa6e6ecc-08fd-4610-8920-1b59b0036ed7" start_index="0" end="3a893b26-7710-4ff5-9839-814e7ec62221" end_index="1" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="83.4057515485963" eyeY="53.6585259286767" eyeZ="-17.4760698607791" lookX="-42.1939233167848" lookY="-39.6943650094872" lookZ="19.954554968201" upX="-0.424403799193203" upY="0.882947562344636" upZ="0.20071111790507" />
+  </Cameras>
+</Workspace>
