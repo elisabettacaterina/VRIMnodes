@@ -45,8 +45,8 @@
   <ItemGroup>
     <EmbeddedResource Include="VRIMnodesImages.resx" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\Large\2d5c86ca-7331-457f-9e98-6e1e8b479218.Large.png" />
     <None Include="Resources\Large\00d6b6a2-a966-42d5-aaa1-e9b14fc6338b.Large.png" />
     <None Include="Resources\Large\0133c898-70cd-4e96-8f90-3bfba0504aa7.Large.png" />
     <None Include="Resources\Large\02349ceb-33b6-4d86-a0a2-87194319182c.Large.png" />
@@ -207,6 +207,17 @@
     <None Include="Resources\Small\f159daad-8c57-4730-94e1-887e46210fe3.Small.png" />
     <None Include="Resources\Small\fa0c7e03-03f5-4e11-bb8c-4af1c79bbbfb.Small.png" />
     <None Include="Resources\Small\ffdbe3c8-c7fd-4de8-b29d-2f3a9784e64f.Small.png" />
+    <None Include="Resources\Large\4ba02735-c9cb-4e63-85be-0b69cdb4ffe8.Large.png" />
+    <None Include="Resources\Large\7ee56500-e114-4cb9-abbd-4b21932efcf8.Large.png" />
+    <None Include="Resources\Small\2d5c86ca-7331-457f-9e98-6e1e8b479218.Small.png" />
+    <None Include="Resources\Small\4ba02735-c9cb-4e63-85be-0b69cdb4ffe8.Small.png" />
+    <None Include="Resources\Small\7ee56500-e114-4cb9-abbd-4b21932efcf8.Small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Large\359f9306-1451-45cc-926d-0905fdc71a40.Large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Small\359f9306-1451-45cc-926d-0905fdc71a40.Small.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="BeforeBuild">
