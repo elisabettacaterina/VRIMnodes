@@ -16,13 +16,13 @@
     <ClassMap partialName="DSCore.Object" resolvedName="DSCore.Object" assemblyName="DSCoreNodes.dll" />
   </NamespaceResolutionMap>
   <Elements>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="dc8d208e-287e-4da8-8a0a-c3be1153e9eb" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="OffsetIN" x="153.568280209928" y="-15.7225630092508" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="// Copyright(c) 2017, Elisabetta Caterina Giovannini&#xA;// Alma Mater Studiorum - University of Bologna&#xA;// VRIM project&#xA;// www.unibo.it/sitoweb/elisabettacaterina.giovannini/en&#xA;// elisabettacaterina.giovannini@unibo.it&#xA;&#xA;StartPt;&#xA;EndPt;&#xA;OffsetIN;&#xA;Vx= EndPt.X-OffsetIN;&#xA;&#xA;V = Point.ByCoordinates(Vx, EndPt.Y, EndPt.Z);&#xA;OffSet= StartPt.X-Vx;" ShouldFocus="false">
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="dc8d208e-287e-4da8-8a0a-c3be1153e9eb" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="OffsetIN" x="153.568280209928" y="-15.7225630092508" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="// Copyright(c) 2017, Elisabetta Caterina Giovannini&#xA;// Alma Mater Studiorum - University of Bologna&#xA;// VRIM project&#xA;// www.unibo.it/sitoweb/elisabettacaterina.giovannini/en&#xA;// elisabettacaterina.giovannini@unibo.it&#xA;&#xA;StartPt;&#xA;EndPt;&#xA;OffsetIN;&#xA;Vx= StartPt.X-OffsetIN;&#xA;&#xA;V = Point.ByCoordinates(Vx, EndPt.Y, EndPt.Z);&#xA;OffSet= StartPt.X-Vx;" ShouldFocus="false">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
       <PortInfo index="2" default="False" />
     </Dynamo.Graph.Nodes.CodeBlockNodeModel>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="146133d3-03c2-4076-b809-1dd4e4e3601d" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <Symbol value="StartPt" />
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="146133d3-03c2-4076-b809-1dd4e4e3601d" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-279.861621564665" y="-63.9384229042868" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="StartPt: var=Point.ByCoordinates(0,0,0);" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="c5e785f4-c261-4e6d-ba29-210af32a9963" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="150" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="EndPt" />
@@ -45,6 +45,6 @@
   <Annotations />
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="68.8349029854087" eyeY="38.5424707597078" eyeZ="-76.1836899036336" lookX="-58.2771830950437" lookY="-34.4670597840877" lookZ="75.4307855083702" upX="-0.0798011244652676" upY="0.99144482882182" upZ="0.103290209638851" />
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
   </Cameras>
 </Workspace>
